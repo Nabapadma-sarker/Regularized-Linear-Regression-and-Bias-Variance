@@ -21,7 +21,7 @@ grad = zeros(size(theta));
 
 H = X*theta;
 J = sum((H-y).^2)/(2*m);
-costregretion = (lambda/(2*m))*sum(theta.^2);
+costregretion = (lambda/(2*m))*sum(theta(2:end,:).^2);
 if(lambda) 
    J = J + costregretion;
 end

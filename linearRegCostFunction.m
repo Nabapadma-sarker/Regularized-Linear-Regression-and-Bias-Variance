@@ -19,10 +19,19 @@ grad = zeros(size(theta));
 %               You should set J to the cost and grad to the gradient.
 %
 
+H = X*theta;
+J = sum((H-y).^2)/(2*m);
+costregretion = (lambda/(2*m))*sum(theta.^2);
+if(lambda) 
+   J = J + costregretion;
+end
+grad = (X'*(H-y))/m;
 
+gradregression = (theta(2:end,:)/m)*lambda;
 
-
-
+if(lambda) 
+   grad(2:end,:) = grad(2:end,:) + gradregression;
+end
 
 
 
